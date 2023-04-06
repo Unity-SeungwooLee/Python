@@ -1,0 +1,20 @@
+import time
+import random
+from selenium import webdriver
+import winsound
+
+driver = webdriver.Chrome(executable_path=r'C:\Users\users\Documents\ChromeDriver\chromedriver.exe')
+
+url = 'write down your url'
+driver.get(url)
+
+xpath_radio_button = '//input[@type="radio"]'
+
+while True:
+    if driver.find_elements_by_xpath(xpath_radio_button):
+        winsound.Beep(990, 1000)
+        break
+    else:
+        wait_time = random.randint(300, 600) # seconds
+        time.sleep(wait_time)
+        driver.refresh()
